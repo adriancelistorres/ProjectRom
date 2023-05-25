@@ -1,0 +1,45 @@
+﻿@model ProyectoRom.Models.data.Libro
+
+@{
+    ViewData["Title"] = "GuardarLibros";
+}
+
+<h1>Guardar Libro</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GuardarLibro">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="descripcion" class="control-label"></label>
+                <input asp-for="descripcion" class="form-control" />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group dropdown">
+            <label>asignatura</label>
+            <br />
+            @Html.DropDownListFor(l=>l.asignatura.id_asig,new SelectList(ViewBag.asignaturas,"id_asig","descripcion"))
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="stock" class="control-label"></label>
+                <input asp-for="stock" class="form-control" />
+                <span asp-validation-for="stock" class="text-danger"></span>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a href="@Url.Action("ListarLibros", "Libro")" class="btn btn-success">back</a>
+</div>
+

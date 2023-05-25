@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoRom.Models.data.Asignatura>
+
+@{
+    ViewData["Title"] = "listarAsignaturas";
+}
+
+<h1>Listar Asignaturas</h1>
+<br />
+<p>
+    <button class="btn btn-outline-success"><a asp-action="GuardarAsignatura" asp-controller="Asignatura">Crear Asignatura</a></button>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_asig)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_asig)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                <button class="btn btn-outline-info">@Html.ActionLink("editar asignatura","EditarAsignatura", "Asignatura", new {  id=item.id_asig  }) </button>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

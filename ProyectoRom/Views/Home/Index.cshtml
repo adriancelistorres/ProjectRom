@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Project Rom</h1>
+    <p>Grupo Tawa</p>
+
+    <div>
+        <a href="@Url.Action("ListarLibros", "Libro")" class="btn btn-success">Mantenimiento de Libros</a>
+    </div>
+    <br />
+    <div>
+        <a href="@Url.Action("ListarAsignaturas", "Asignatura")" class="btn btn-info">Mantenimiento de Asignaturas</a>
+    </div>
+</div>

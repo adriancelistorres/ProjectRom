@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProyectoRom.Models.data.Libro>
+
+@{
+    ViewData["Title"] = "listarLibros";
+}
+
+<h1>Lista de Libros</h1>
+<br />
+<p>
+    <button class="btn btn-outline-success"><a asp-action="GuardarLibros" asp-controller="Libro">Crear Libro</a></button>
+
+</p>
+
+<form asp-controller="Libro" asp-action="BuscarLibros">
+    <p>
+        buscar: <input type="text" name="criterio" class="form-text" />
+        <input type="submit" value="criterio" class="btn btn-sn btn-dark" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_libro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                Asignatura
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_libro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asignatura.descripcion) <!-- Acceder al nombre de la asignatura -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock)
+                </td>
+                <td>
+                    <button class="btn btn-outline-info">@Html.ActionLink("editar libro","EditarLibros", "Libro", new {  id=item.id_libro  }) </button>
+
+                    <button class="btn btn-outline-danger">@Html.ActionLink("eliminar libro","EliminarLibros", "Libro", new {  lib=item.id_libro  })</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
